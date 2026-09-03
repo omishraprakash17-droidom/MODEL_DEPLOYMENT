@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
 from sklearn.ensemble import RandomForestClassifier
 import pickle
 app=Flask(__name__)
@@ -19,5 +19,17 @@ def predict():
     prediction=1 if prediction==1 else-1
     
     return render_template('REN_html.html',prediction=prediction,email_text=email_text)
+'''MAKING OF AN API KEY'''
+@app.route('/api/predict',methods=['POST'])
+def predicit_api():
+    data=request.get_json(force=True)
+    email=data['Email-content']
+    tokenized_email=tokenizer.transform([email])
+        # prediction=model.predict(tokenized_email)[0]
+    prediction=model.predict(tokenized_email)
+    prediction=1 if prediction==1 else-1
+    return jsonify({'prediction':prediction,'email':email})
+
 if __name__=='__main__':
     app.run(host='0.0.0.0',debug=True)  
+'''WE CAN CALL AN API USING TERMINAL OR AN EXTENSION CALLED AS THUNDER CLIENT INSOMINIA POSTMAN'''
