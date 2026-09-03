@@ -27,6 +27,9 @@ def predicit_api():
 def test():
     return "TEST ROUTE WORKING"
 
+print("========== REGISTERED ROUTES ==========")
+print(app.url_map)
+
 if __name__=='__main__':
     app.run(host='0.0.0.0',debug=True)  
 '''WE CAN CALL AN API USING TERMINAL OR AN EXTENSION CALLED AS THUNDER CLIENT INSOMINIA POSTMAN'''
