@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Email Spam Classifier</title>
+        <!-- STYLE HELPS TO CHANGE THE STYLE OF THE BODY AND OF ANY OTHER PARAMETERS -->
+        <style>
+            body{
+                text-align:center;
+            }
+            button{
+                color:aliceblue;
+                background-color:blue;
+            }
+        </style>
+    </head>
+<body>
+    <div>
+    <h1> EMAIL SPAM Classifier</h1>
+    <!-- FORM WILL CREATE A PALCE WHERE YOU CAN ADD DIFFERENT TYPES OF PARAMETERS -->
+     <!-- NOW WE WILL BE USING POST METHOD AND ASLO ADD A PLACE TO SUMBIT -->
+    <form method="post" action="/predict">
+        <!-- TEXTAREA GIVES YOU AN AREA WERE YOU CAN WRITE WITH A PALCEHOLDER TO MENTION SOMETHING IN THERE WITH ROWS AND COLUMNS AS BREADTH AND WIDTH -->
+         <!-- NOT MENTIONING THE TEXT PART HERE GIVES YOU NOTHING IN THE TEXTAREA PART AND IF YOU MENTION THEN YOU WILL GET THE PART TAHT YOU HAD WRITTEN -->
+        <textarea  name='Email-content'  placeholder="ENTER YOUR EMAIL" ROWS='12' COLUMNS='100'>{{email_text}}</textarea>
+        <div><button type="submit"> submit</button>
+        <a href='/'>RESET</a>
+    </div>
+
+    </form>
+    <!-- FECTHING THE TEXT THAT WE HAD WRIITN IN APP>PY PART -->
+     <!-- KNOWN AS ZINZIA TEMPLATE -->
+      {% if prediction==1%}
+      <h2 style="color:red">SPAM</h2>
+      {% elif prediction==-1%}
+      <h2 style="color:olivedrab"> Not Spam</h2>
+      {% endif %}
+     <!-- <h2>{{prediction}}</h2> -->
+
+    </div>
+</body>
+</html> 
